@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Chatbot</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #343541;
+      color: #d1d5db;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .chat-container {
+      background-color: #444654;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 600px;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .chat-header {
+      background-color: #202123;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .chat-header img {
+      width: 36px;
+      height: 36px;
+    }
+
+    .chat-body {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      scrollbar-width: thin;
+      scrollbar-color: #555 #202123;
+    }
+
+    .chat-body::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .chat-body::-webkit-scrollbar-track {
+      background: #202123;
+    }
+
+    .chat-body::-webkit-scrollbar-thumb {
+      background-color: #555;
+      border-radius: 10px;
+    }
+
+    .message {
+      background-color: #3e3f4b;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 1rem;
+      max-width: 80%;
+      word-wrap: break-word;
+    }
+
+    .message.user {
+      align-self: flex-end;
+      background-color: #0078ff;
+      color: #fff;
+    }
+
+    .message.bot {
+      align-self: flex-start;
+      background-color: #3e3f4b;
+      color: #d1d5db;
+    }
+
+    .message img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-top: 8px;
+    }
+
+    .typing-indicator {
+      display: none;
+      align-items: center;
+      font-style: italic;
+      font-size: 0.9rem;
+      gap: 5px;
+      color: #9ca3af;
+    }
+
+    .typing-indicator span {
+      width: 8px;
+      height: 8px;
+      background-color: #9ca3af;
+      border-radius: 50%;
+      animation: typing 1.5s infinite;
+    }
+
+    .typing-indicator span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .typing-indicator span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes typing {
+      0%, 80%, 100% {
+        transform: scale(0.8);
+      }
+      40% {
+        transform: scale(1);
+      }
+    }
+
+    .chat-footer {
+      display: flex;
+      gap: 10px;
+      padding: 10px 15px;
+      background-color: #202123;
+      align-items: center;
+    }
+
+    .chat-footer input[type="text"] {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      outline: none;
+      background-color: #3e3f4b;
+      color: #fff;
+    }
+
+    .chat-footer button {
+      padding: 10px 16px;
+      background-color: #0078ff;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .chat-footer button:hover {
+      background-color: #005bb5;
+    }
+
+    .chat-footer button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+<div class="chat-container">
+  <div class="chat-header">
+    <img src="images/logo.png" alt="Logo">
+    ChatRizz 4.0
+  </div>
+  <div id="chat-body" class="chat-body"></div>
+  <div id="typing-indicator" class="typing-indicator">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="chat-footer">
+    <input 
+      id="chat-input" 
+      type="text" 
+      placeholder="Type your message..." 
+      onkeydown="handleKeyPress(event)"
+    />
+    <button id="send-button" onclick="handleSubmit()">&rarr;</button>
+  </div>
+</div>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+  const chatBody = document.getElementById("chat-body");
+  const chatInput = document.getElementById("chat-input");
+  const typingIndicator = document.getElementById("typing-indicator");
+
+  function appendMessage(text, sender, isImage = false) {
+    const messageDiv = document.createElement("div");
+    messageDiv.className = `message ${sender}`;
+
+    if (isImage) {
+      const img = document.createElement("img");
+      img.src = text;
+      img.alt = "Generated Image";
+      messageDiv.appendChild(img);
+    } else {
+      messageDiv.textContent = text;
+    }
+
+    chatBody.appendChild(messageDiv);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function showTypingIndicator(show) {
+    typingIndicator.style.display = show ? "flex" : "none";
+  }
+
+  function handleSubmit() {
+    const prompt = chatInput.value.trim();
+    if (!prompt) return;
+
+    appendMessage(prompt, "user");
+    chatInput.value = "";
+    showTypingIndicator(true);
+
+    const isImageRequest = prompt.toLowerCase().startsWith("generate image:") || 
+                           prompt.toLowerCase().includes("image");
+
+    const endpoint = isImageRequest ? "http://localhost:8080/image" : "http://localhost:8080/chat";
+    const payload = isImageRequest
+      ? { prompt: prompt.replace(/generate image:/i, "").trim(), n: 1, size: "1024x1024" }
+      : { prompt };
+
+    axios.post(endpoint, payload)
+      .then((res) => {
+        showTypingIndicator(false);
+        if (res.data.images) {
+          res.data.images.forEach((imgUrl) => appendMessage(imgUrl, "bot", true));
+        } else if (res.data.response) {
+          appendMessage(res.data.response, "bot");
+        } else {
+          appendMessage("Unexpected response format. Please try again.", "bot");
+        }
+      })
+      .catch(() => {
+        showTypingIndicator(false);
+        appendMessage("Failed to fetch response. Please try again.", "bot");
+      });
+  }
+
+  function handleKeyPress(event) {
+    if (event.key === "Enter") {
+      handleSubmit();
+    }
+  }
+
+  function initializeChat() {
+    appendMessage("Hello! How can I assist you today?", "bot");
+  }
+
+  window.onload = initializeChat;
+</script>
+
+</body>
+</html>

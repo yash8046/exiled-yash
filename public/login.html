@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-attachment: scroll; /* Change from fixed to scroll */
+    
+}
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://img.freepik.com/free-vector/gradient-technological-background_23-2148884155.jpg?t=st=1737813226~exp=1737816826~hmac=ca33e181b3189f10a176fda56f91bac093ae8f36e09af69ad3a08db970125d65&w=1380') no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+}
+
+@media (max-width: 1024px) {
+    body {
+        background: url('https://img.freepik.com/free-vector/gradient-technological-background_23-2148884155.jpg?t=st=1737813226~exp=1737816826~hmac=ca33e181b3189f10a176fda56f91bac093ae8f36e09af69ad3a08db970125d65&w=1380') no-repeat center center fixed;
+        background-size: cover;
+    }
+}
+@media only screen and (min-device-pixel-ratio: 3), 
+       only screen and (min-resolution: 192dpi) {
+    body {
+        background: url('https://img.freepik.com/free-vector/gradient-technological-background_23-2148884155.jpg?t=st=1737813226~exp=1737816826~hmac=ca33e181b3189f10a176fda56f91bac093ae8f36e09af69ad3a08db970125d65&w=1380') no-repeat center center fixed;
+        background-size: cover;
+    }
+}
+
+/* Large phones, such as iPhone 15 Pro Max in portrait mode */
+@media (max-width: 1290px) and (min-width: 768px) {
+    body {
+        background: url('https://img.freepik.com/free-vector/gradient-technological-background_23-2148884155.jpg?t=st=1737813226~exp=1737816826~hmac=ca33e181b3189f10a176fda56f91bac093ae8f36e09af69ad3a08db970125d65&w=1380') no-repeat center center fixed;
+        background-size: cover;
+    }
+}
+/* For devices with width 768px and smaller */
+@media (max-width: 768px) {
+    body {
+        background: url('https://img.freepik.com/free-vector/gradient-technological-background_23-2148884155.jpg?t=st=1737813226~exp=1737816826~hmac=ca33e181b3189f10a176fda56f91bac093ae8f36e09af69ad3a08db970125d65&w=1380') no-repeat center center fixed;
+        background-size: cover;
+    }
+}
+
+/* For devices with width 480px and smaller */
+@media (max-width: 480px) {
+    body {
+        background: url('https://img.freepik.com/free-vector/gradient-technological-background_23-2148884155.jpg?t=st=1737813226~exp=1737816826~hmac=ca33e181b3189f10a176fda56f91bac093ae8f36e09af69ad3a08db970125d65&w=1380') no-repeat center center fixed;
+        background-size: cover;
+    }
+}
+
+/* For devices with width 320px and smaller */
+@media (max-width: 320px) {
+    body {
+        background: url('https://img.freepik.com/free-vector/gradient-technological-background_23-2148884155.jpg?t=st=1737813226~exp=1737816826~hmac=ca33e181b3189f10a176fda56f91bac093ae8f36e09af69ad3a08db970125d65&w=1380') no-repeat center center fixed;
+        background-size: cover;
+    }
+}
+
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        
+
+                .logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+}
+.logo img {
+    width: 10%; /* Makes it responsive */
+    max-width: 40px; /* Ensures it doesn’t get too large */
+    height: auto;
+}
+.header-link {
+    text-decoration: none; /* Removes underline from the link */
+    color: inherit; /* Inherits text color */
+    display: block; /* Ensures the link covers the entire header */
+}
+
+.header-link:hover {
+    cursor: pointer; /* Changes cursor to indicate it's clickable */
+}
+
+.card {
+      width: 100%;
+      max-width: 400px;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 16px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      padding: 30px;
+      text-align: center;
+    }
+
+    .card h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+      width: 93%;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      background: #f9f9f9;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
+    }
+
+    .error {
+      color: #ef4444;
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+    }
+
+    .button {
+      width: 100%;
+      padding: 12px;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .button:hover {
+      background-color: #2563eb;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .button:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    .forgot-password {
+      display: block;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .forgot-password:hover {
+      text-decoration: underline;
+    }
+    
+    body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://img.freepik.com/free-vector/gradient-technological-background_23-2148884155.jpg?t=st=1737813226~exp=1737816826~hmac=ca33e181b3189f10a176fda56f91bac093ae8f36e09af69ad3a08db970125d65&w=1380') no-repeat center center;
+            background-size: cover;
+            z-index: -1;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo img {
+            width: 40px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        /* Card Styling */
+        .card {
+            width: 100%;
+            max-width: 400px;
+            margin: 2rem auto;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 16px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .card h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #f9f9f9;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
+        }
+
+        .error {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .button {
+            width: 100%;
+            padding: 12px;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .button:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .button:active {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+
+        .forgot-password {
+            display: block;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Ensure it spans the full width of the page */
+}
+
+        .social-media-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .social-link img {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-link img:hover {
+            transform: scale(1.2);
+        }
+        @media (max-width: 768px) {
+    header {
+        font-size: 18px;
+        padding: 0.8rem;
+    }
+
+    .card {
+        width: 95%;
+        margin: 1.5rem auto;
+        padding: 20px;
+    }
+
+    .card h1 {
+        font-size: 1.8rem;
+    }
+
+    .button {
+        font-size: 1rem;
+    }
+}
+
+/* For devices with width 480px and smaller */
+@media (max-width: 480px) {
+    header {
+        font-size: 16px;
+        padding: 0.5rem;
+    }
+
+    .logo img {
+        width: 30px;
+    }
+
+    .card {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .card h1 {
+        font-size: 1.5rem;
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    .form-group input {
+        font-size: 0.9rem;
+        padding: 10px;
+        width: 93%;
+    }
+
+    .button {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    footer {
+        font-size: 0.8rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="header-link">
+            <div class="logo">
+                <img src="images/logo.png" alt="Hanu Logo" class="logo-image" />
+                About ChatRizz
+            </div>
+        </a>
+    </header>
+    <div class="card">
+        <h1>Login</h1>
+        <form id="loginForm">
+          <div id="error" class="error"></div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password" required>
+          </div>
+          <button type="submit" class="button">Login</button>
+          <a href="#" class="forgot-password">Forgot your password?</a>
+        </form>
+      </div>
+    
+      <!-- Supabase script -->
+      <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+        const supabaseUrl = 'https://kshiasrdyejteckljmbz.supabase.co'; // Replace with your Supabase URL
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtzaGlhc3JkeWVqdGVja2xqbWJ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzc3ODIzNzgsImV4cCI6MjA1MzM1ODM3OH0.WSPZSicgbyr7oN0Cr4DNfLSQOB_Qkn6GxoMagOLeOjE'; // Replace with your Supabase anon key
+        const supabase = createClient(supabaseUrl, supabaseKey);
+    
+        // Handle login form submission
+        document.getElementById('loginForm').addEventListener('submit', async function(event) {
+          event.preventDefault();
+    
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('password').value;
+          const errorDiv = document.getElementById('error');
+    
+          errorDiv.textContent = '';
+    
+          if (!email || !password) {
+            errorDiv.textContent = 'Please fill in all fields.';
+            return;
+          }
+    
+          try {
+            const { data, error } = await supabase.auth.signInWithPassword({
+              email: email,
+              password: password
+            });
+    
+            if (error) {
+              errorDiv.textContent = 'Invalid email or password.';
+            } else {
+              alert('Login successful!');
+              console.log('User data:', data);
+            }
+          } catch (err) {
+            errorDiv.textContent = 'An error occurred. Please try again later.';
+            console.error(err);
+          }
+        });
+      </script>
+
+    <footer>
+        <p>&copy; 2024 Hanu. All Rights Reserved.</p>
+        <div class="social-media-links">
+            <a href="https://wa.me/17046522396" target="_blank" class="social-link whatsapp">
+                <img src="images/whatsapp.png" alt="WhatsApp" />
+            </a>
+            <a href="https://t.me/+7sELas_gyp9kYmUx" target="_blank" class="social-link telegram">
+                <img src="images/telegram.png" alt="Telegram" />
+            </a>
+            <a href="https://www.instagram.com/hanu_edu" target="_blank" class="social-link instagram">
+                <img src="images/instagram.png" alt="Instagram" />
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61569985835293" target="_blank" class="social-link instagram">
+                <img src="images/facebook.png" alt="Facebook" />
+            </a>
+        </div>
+        <style>
+            .social-media-links {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                margin-top: 10px;
+            }
+            .social-link img {
+                width: 24px;
+                height: 24px;
+                transition: transform 0.3s ease;
+            }
+            .social-link img:hover {
+                transform: scale(1.2);
+            }
+        </style>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Hanu - Hanu Edu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-attachment: scroll; /* Change from fixed to scroll */
+    
+}
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+}
+
+@media (max-width: 1024px) {
+    body {
+        background: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1024&q=80') no-repeat center center fixed;
+        background-size: cover;
+    }
+}
+@media only screen and (min-device-pixel-ratio: 3), 
+       only screen and (min-resolution: 192dpi) {
+    body {
+        background: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=2796&q=80') no-repeat center center fixed;
+        background-size: cover;
+    }
+}
+
+/* Large phones, such as iPhone 15 Pro Max in portrait mode */
+@media (max-width: 1290px) and (min-width: 768px) {
+    body {
+        background: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1290&q=80') no-repeat center center fixed;
+        background-size: cover;
+    }
+}
+/* For devices with width 768px and smaller */
+@media (max-width: 768px) {
+    body {
+        background: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=768&q=80') no-repeat center center fixed;
+        background-size: cover;
+    }
+}
+
+/* For devices with width 480px and smaller */
+@media (max-width: 480px) {
+    body {
+        background: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=480&q=80') no-repeat center center fixed;
+        background-size: cover;
+    }
+}
+
+/* For devices with width 320px and smaller */
+@media (max-width: 320px) {
+    body {
+        background: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=320&q=80') no-repeat center center fixed;
+        background-size: cover;
+    }
+}
+
+        header {
+            background-color: rgba(0, 77, 153, 0.9);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .about-section {
+            font-family: 'Poppins', sans-serif;
+            padding: 3rem 2rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            margin: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-section h1 {
+            font-size: 2.5rem;
+            color: #004d99;
+            margin-bottom: 1rem;
+        }
+
+        .about-section p {
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+            font-size: 1.1rem;
+            color: white;
+            line-height: 1.8;
+            transition: color 0.3s ease; /* Add a transition effect for color change */
+        }
+
+        /* Change color of paragraph to header color when the paragraph itself is hovered */
+        
+
+        .about-section p span {
+            color: #333; /* Color for the non-white text */
+        }
+
+        .offerings-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .offering {
+            background-color: #004d99;
+            color: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .offering:hover {
+            transform: translateY(-10px);
+            background-color: #ffd700;
+            color: #00264d;
+        }
+        .offering:hover p {
+            color: #00264d;
+        }
+        .about-section  {
+            color: #004d99; /* Same color as header on hover */
+        }
+        .offering h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .offering p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 2rem;
+            background-color: #004d99;
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #ffd700;
+            color: #00264d;
+        }
+
+        footer {
+            background-color: rgba(0, 77, 153, 0.9);
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+                .logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+}
+.logo img {
+    width: 10%; /* Makes it responsive */
+    max-width: 40px; /* Ensures it doesn’t get too large */
+    height: auto;
+}
+.header-link {
+    text-decoration: none; /* Removes underline from the link */
+    color: inherit; /* Inherits text color */
+    display: block; /* Ensures the link covers the entire header */
+}
+
+.header-link:hover {
+    cursor: pointer; /* Changes cursor to indicate it's clickable */
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="header-link">
+            <div class="logo">
+                <img src="images/logo.png" alt="Hanu Logo" class="logo-image" />
+                About Hanu
+            </div>
+        </a>
+    </header>
+    
+
+    <section class="about-section">
+        <h1>Who We Are</h1>
+        <p><span>Hanu offers a holistic suite of services with a mission of supporting students on their educational journeys. At Hanu Edu, we believe education unlocks a world of possibilities. With over a decade of experience in education consulting, we've proudly guided countless students to their dream universities, equipping them with tools to make a global impact.</span></p>
+
+        <h1>Our Offerings</h1>
+        <div class="offerings-container">
+            <div class="offering">
+                <h3>AI-Enabled University Recruitment</h3>
+                <p>Leverage cutting-edge technology to find the best-fit institutions globally, based on your unique profile.</p>
+            </div>
+            <div class="offering">
+                <h3>Application Assistance</h3>
+                <p>Get tailored support for crafting SOPs, LORs, and scholarship applications to boost your chances.</p>
+            </div>
+            <div class="offering">
+                <h3>Financial Solutions</h3>
+                <p>Secure education loans, GICs, and budgeting tools for a stress-free financial journey.</p>
+            </div>
+            <div class="offering">
+                <h3>Visa and Immigration Support</h3>
+                <p>Navigate the visa application process with step-by-step guidance for seamless approval.</p>
+            </div>
+            <div class="offering">
+                <h3>Language Proficiency Prep</h3>
+                <p>Excel in TOEFL, IELTS, and other language tests with our comprehensive preparation programs.</p>
+            </div>
+            <div class="offering">
+                <h3>Career Development</h3>
+                <p>Transition from education to employment with mentorship, internships, and global networking opportunities.</p>
+            </div>
+            <div class="offering">
+                <h3>Admission Guidance</h3>
+                <p>Applying to U.S. universities as an international student requires careful planning, and we’re here to guide you through each step..</p>
+            </div>
+            <div class="offering">
+                <h3>University Research</h3>
+                <p>Finding the perfect university match is an important step for prospective students, as it significantly impacts their academic success, career opportunities, and personal development.</p>
+            </div>
+        </div>
+
+        <a href="#apply" class="cta-button">Join Us Today</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Hanu. All Rights Reserved.</p>
+        <div class="social-media-links">
+            <a href="https://wa.me/17046522396" target="_blank" class="social-link whatsapp">
+                <img src="images/whatsapp.png" alt="WhatsApp" />
+            </a>
+            <a href="https://t.me/+7sELas_gyp9kYmUx" target="_blank" class="social-link telegram">
+                <img src="images/telegram.png" alt="Telegram" />
+            </a>
+            <a href="https://www.instagram.com/hanu_edu" target="_blank" class="social-link instagram">
+                <img src="images/instagram.png" alt="Instagram" />
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61569985835293" target="_blank" class="social-link instagram">
+                <img src="images/facebook.png" alt="Facebook" />
+            </a>
+        </div>
+        <style>
+            .social-media-links {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                margin-top: 10px;
+            }
+            .social-link img {
+                width: 24px;
+                height: 24px;
+                transition: transform 0.3s ease;
+            }
+            .social-link img:hover {
+                transform: scale(1.2);
+            }
+        </style>
+    </footer>
+</body>
+</html>

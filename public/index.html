@@ -1,0 +1,1654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatRizz </title>
+    <div id="root"></div>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2024/12/20/08/20241220083230-XD7950J5.js"></script>
+<script>
+    window.botpressWebChat = {
+        botId: 'magnificent-raccoon',
+        hostUrl: 'https://cdn.botpress.cloud/webchat/v2.3/shareable.html?configUrl=https://files.bpcontent.cloud/2024/12/20/08/20241220083230-DKHP5FJW.json',
+        "description": "A short description of your bot's purpose",
+    "avatarUrl": "https://your-image-url.com/avatar.png",
+    "defaultLanguage": "en"
+    };
+</script>
+    
+    <style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: url('https://img.freepik.com/free-vector/gradient-technological-background_23-2148884155.jpg?t=st=1737813226~exp=1737816826~hmac=ca33e181b3189f10a176fda56f91bac093ae8f36e09af69ad3a08db970125d65&w=1380') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-attachment: scroll; /* Change from fixed to scroll */
+    
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://img.freepik.com/free-vector/gradient-technological-background_23-2148884155.jpg?t=st=1737813226~exp=1737816826~hmac=ca33e181b3189f10a176fda56f91bac093ae8f36e09af69ad3a08db970125d65&w=1380') no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+}
+
+@media (max-width: 1024px) {
+    body {
+        background: url('https://img.freepik.com/free-vector/gradient-connection-background_23-2150491626.jpg?t=st=1737811997~exp=1737815597~hmac=c6c61be580d753fe4ebd7ffa73aea480b895d26d31153a00232a08ae579c9a0b&w=1380') no-repeat center center fixed;
+        background-size: cover;
+    }
+}
+
+@media only screen and (min-device-pixel-ratio: 3), 
+       only screen and (min-resolution: 192dpi) {
+    body {
+        background: url('https://img.freepik.com/free-vector/gradient-connection-background_23-2150491626.jpg?t=st=1737811997~exp=1737815597~hmac=c6c61be580d753fe4ebd7ffa73aea480b895d26d31153a00232a08ae579c9a0b&w=1380') no-repeat center center fixed;
+        background-size: cover;
+    }
+}
+
+/* Large phones, such as iPhone 15 Pro Max in portrait mode */
+@media (max-width: 1290px) and (min-width: 768px) {
+    body {
+        background: url('https://img.freepik.com/free-vector/gradient-connection-background_23-2150491626.jpg?t=st=1737811997~exp=1737815597~hmac=c6c61be580d753fe4ebd7ffa73aea480b895d26d31153a00232a08ae579c9a0b&w=1380') no-repeat center center fixed;
+        background-size: cover;
+    }
+}
+
+/* For devices with width 768px and smaller */
+@media (max-width: 768px) {
+    body {
+        background: url('https://img.freepik.com/free-vector/gradient-connection-background_23-2150491626.jpg?t=st=1737811997~exp=1737815597~hmac=c6c61be580d753fe4ebd7ffa73aea480b895d26d31153a00232a08ae579c9a0b&w=1380') no-repeat center center fixed;
+        background-size: cover;
+    }
+}
+
+/* For devices with width 480px and smaller */
+@media (max-width: 480px) {
+    body {
+        background: url('https://img.freepik.com/free-vector/gradient-connection-background_23-2150491626.jpg?t=st=1737811997~exp=1737815597~hmac=c6c61be580d753fe4ebd7ffa73aea480b895d26d31153a00232a08ae579c9a0b&w=1380') no-repeat center center fixed;
+        background-size: cover;
+    }
+}
+
+/* For devices with width 320px and smaller */
+@media (max-width: 320px) {
+    body {
+        background: url('https://img.freepik.com/free-vector/gradient-connection-background_23-2150491626.jpg?t=st=1737811997~exp=1737815597~hmac=c6c61be580d753fe4ebd7ffa73aea480b895d26d31153a00232a08ae579c9a0b&w=1380') no-repeat center center fixed;
+        background-size: cover;
+    }
+}
+
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 0.5rem 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-links a {
+            color: rgba(0, 0, 0, 1);
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            font-weight: 500;
+            border-radius: 30px;
+            background-color: rgb(255, 255, 255);
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .nav-links a:hover {
+            background-color: #a0a0a059;
+            color: #ffffff;
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+       
+
+        
+        .apply-button {
+padding: 1rem 2rem;
+  font-size: 1.2rem;
+  background-color: rgba(255, 255, 255, 0.952);
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: background-color 0.3s;
+  animation: blink 1s infinite;
+  font-family: 'Poppins', sans-serif;
+}
+.apply-button:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+.service-block {
+  flex: 1 1 calc(33.333% - 20px); /* 3 blocks per row */
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 1rem;
+  border-radius: 10px;
+
+  text-align: center;
+  transition: transform 0.3s;
+  font-family: 'Poppins', sans-serif;
+}
+
+.service-block:hover {
+  transform: scale(1.05);
+  font-family: 'Poppins', sans-serif;
+}
+
+.service-block h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.service-block p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.service-block .button {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  color: white;
+  background-color: #000000;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.service-block .button:hover {
+  background-color: #ffd700;
+  color: #004d99;
+}
+@media (max-width: 768px) {
+  .service-block {
+      flex: 1 1 calc(50% - 20px); /* 2 blocks per row */
+  }
+}
+
+@media (max-width: 480px) {
+  .service-block {
+      flex: 1 1 100%; /* 1 block per row */
+  }
+} 
+.land-block {
+  flex: 1 1 calc(33.333% - 20px); /* 3 blocks per row */
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.007);
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+
+
+
+
+
+        .hero {
+            
+            height: 200px;
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(0, 0, 0);
+            
+        }
+        .hero-section {
+        text-align: center;
+        background-size: cover;
+        padding: 50px 0;
+       
+        color: rgb(255, 255, 255);
+    }
+    
+        .hero h1 {
+            font-size: 3rem;
+        }
+
+        section {
+            padding: 2rem;
+            text-align: center;
+            background: rgba(19, 19, 19, 0.075);
+            margin: 2rem;
+            border-radius: 15px;
+           
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        /* Questionnaire Dialog */
+        #questionnaire {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 500px;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            
+            z-index: 1001;
+            display: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        #questionnaire h2 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: #004d99;
+        }
+
+        .question {
+            margin-bottom: 1rem;
+        }
+
+        .options label {
+            display: block;
+            margin: 0.5rem 0;
+            cursor: pointer;
+        }
+
+        .progress {
+            margin: 1rem 0;
+            height: 10px;
+            background: #ddd;
+            border-radius: 5px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: #004d99;
+            width: 0;
+            border-radius: 5px;
+            transition: width 0.3s;
+        }
+
+        .dialog-buttons {
+            text-align: right;
+            margin-top: 1rem;
+        }
+
+        .dialog-buttons button {
+            padding: 0.5rem 1rem;
+            border: none;
+            background-color: #004d99;
+            color: white;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dialog-buttons button:hover {
+            background-color: #ffd700;
+            color: #000000;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: none;
+        }
+        .logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+}
+.logo img {
+    width: 10%; /* Makes it responsive */
+    max-width: 400px; /* Ensures it doesn’t get too large */
+    height: auto;
+}
+.reviews {
+   
+    padding: 0.4rem;
+    text-align: center;
+    margin: 1rem auto;
+    border-radius: 15px;
+    max-width: 95%;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+
+.review-heading {
+    font-size: 2rem;
+    color: rgb(255, 255, 255);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.review-heading h3 {
+    font-size: 2rem;
+    color: #000000;
+    margin-bottom: 1.5rem;
+}
+
+.review-container {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto; /* Enable horizontal scrolling for small screens */
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+    padding: 10px;
+    scroll-snap-type: x mandatory; /* Snap effect for smoother scrolling */
+    scroll-behavior: smooth; /* Smooth scrolling effect */
+}
+
+
+/* Scrollbar styling for modern look */
+/* Scrollbar styling for circular and light blue scrollbar */
+.review-container::-webkit-scrollbar {
+    height: 10px; /* Height for horizontal scrollbar */
+}
+
+.review-container::-webkit-scrollbar-track {
+    background: #05050500; /* Very light blue track color */
+    border-radius: 10px;
+}
+
+.review-container::-webkit-scrollbar-thumb {
+    background: #00000000; /* Light blue thumb color */
+    border-radius: 50px; /* Circular scrollbar */
+    border: 2px solid #f8faff00; /* Adds space between track and thumb */
+    transition: background 0.3s ease;
+}
+
+.review-container::-webkit-scrollbar-thumb:hover {
+    background: #80c2ff00; /* Slightly darker blue on hover */
+}
+
+.review-container::-webkit-scrollbar-thumb:active {
+    background: #4da3ff00; /* Even darker blue on active */
+}
+
+/* For Firefox */
+.review-container {
+    scrollbar-color: #cee0f26b #f8faff00; /* Thumb and track colors */
+    scrollbar-width: thin; /* Thin scrollbar */
+}
+/* Additional Styling for Small Devices */
+@media (max-width: 768px) {
+    .review-container::-webkit-scrollbar {
+        height: 8px; /* Reduced height for mobile devices */
+    }
+}
+
+.review-card {
+    flex: 0 0 auto;
+    width: 350px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    text-align: left;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 0.5;
+    transform: scale(0.9);
+    position: relative;
+    scroll-snap-align: center; /* Center each card */
+}
+
+.review-card.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.review-card:hover {
+    transform: scale(1.02);
+    opacity: 1;
+}
+
+.review-card .stars {
+    font-size: 1.5rem; /* Larger star size */
+    color: gold;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.review-card h3 {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin: 1.5rem 0 0.5rem 0;
+}
+
+.review-card p {
+    font-size: 0.9rem;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.review-card .reviewer {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    margin-top: 1rem;
+    color: #ffffff;
+}
+
+.review-card .reviewer img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Tablet View */
+@media (max-width: 768px) {
+    .reviews {
+        padding: 1.5rem;
+        margin: 0.5rem;
+    }
+
+    .review-heading {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .review-card {
+        width: 90%; /* Allow cards to resize for smaller screens */
+        margin: 0 auto;
+        padding: 1rem;
+    }
+
+    .review-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .review-card p {
+        font-size: 0.85rem;
+    }
+
+    .review-card .stars {
+        font-size: 1.4rem;
+    }
+
+    .review-card .reviewer img {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+/* Mobile View */
+@media (max-width: 480px) {
+    .reviews {
+        padding: 1rem;
+    }
+
+    .review-heading {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .review-container {
+        gap: 0.5rem; /* Reduced gap between cards */
+    }
+
+    .review-card {
+        width: 100%; /* Full width for cards */
+        padding: 0.8rem;
+    }
+
+    .review-card h3 {
+        font-size: 1rem;
+    }
+
+    .review-card p {
+        font-size: 0.8rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .review-card .stars {
+        font-size: 1.2rem;
+    }
+
+    .review-card .reviewer img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .review-card .reviewer {
+        font-size: 0.9rem;
+    }
+}
+
+
+        .scrolling-message {
+            position: relative;
+    background-color: #ffffff;
+    color: #00264d;
+    text-align: center;
+    padding: 0.5rem;
+    font-weight: bold;
+    font-size: 1rem;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+        }
+
+        .scrolling-message span {
+        display: inline-block;
+    white-space: nowrap;
+    animation: scroll 10s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+        transform: translateX(100%); /* Start off-screen to the right */
+    }
+    50% {
+        transform: translateX(0); /* Moves to the center */
+    }
+    100% {
+        transform: translateX(-100%); /* Move off-screen to the left */
+    }
+        }
+        .timer-section {
+    text-align: center;
+    margin: 2rem;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease-in-out;
+    
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+      font-family: 'Poppins', sans-serif;
+}
+
+        .timer-description {
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .timer {
+    font-size: 1.12rem;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
+    padding: .2rem 1rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+    text-align: center;
+    letter-spacing: 1px;
+    display: inline-block; /* Make the timer box wrap to its content */
+    max-width: 100%; /* Ensure it doesn't exceed the available space */
+    width: auto; /* Allow the width to adjust based on the content */
+    animation: blink 1s infinite; 
+}
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.9;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+/* Adjust menu-toggle button */
+.menu-toggle {
+    display: none; /* Hidden by default on larger screens */
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    z-index: 1100;
+    cursor: pointer;
+}
+.nav-links .close-menu {
+    display: none;
+}
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: row;
+        position: relative;
+    }
+    .nav-links .close-menu {
+        display: block;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 2rem;
+        font-weight: bold;
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .nav-links .close-menu:hover {
+        color: #000000;
+    }
+    .nav-links {
+        padding-top: 100px;
+        display: none; /* Hidden by default */
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 250px;
+        background-color: rgba(0, 0, 0, 0.95);
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+        padding: 60px 20px 20px; /* Add padding-top for the close button */
+        gap: 10px;
+        z-index: 1000;
+    }
+    .nav-links a {
+        margin-top: 10px; /* Add spacing between menu items for better clarity */
+        text-align: left; /* Align menu items */
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+    .nav-links.show {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block; /* Visible on mobile */
+    }
+
+    .menu-toggle.hidden {
+        display: none; /* Hidden when menu is open */
+    }
+  
+
+}
+.whatsapp-float {
+    position: fixed;
+    bottom: 25px;
+    left: 30px;
+    z-index: 1000;
+    width: 60px;
+    height: 60px;
+    background-color: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+.whatsapp-icon {
+    width: 40px;
+    height: 40px;
+}
+/*achievements*/
+.stats-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column on smaller screens */
+    gap: 1.5rem; /* Slightly reduce gap for smaller screens */
+    padding: 1rem; /* Reduced padding for better fit */
+    margin: 1rem auto; /* Adjusted margin for mobile screens */
+    max-width: 100%; /* Allow container to use full width on smaller screens */
+}
+
+.stat-item {
+    background: rgb(255, 255, 255);
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 1.5rem; /* Slightly reduced padding for compact fit */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 1s ease-out;
+}
+
+.stat-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.stat-icon {
+    width: 60px; /* Reduced size for mobile */
+    height: 60px;
+    margin-bottom: 1rem;
+    animation: fadeInScale 1s ease-out;
+}
+
+.stat-item h3 {
+    font-size: 1.6rem; /* Adjusted font size */
+    color: #004d99;
+    margin: 0.5rem 0;
+}
+
+.stat-item p {
+    font-size: 0.95rem; /* Slightly smaller text for readability */
+    color: #333;
+    line-height: 1.4; /* Adjusted line-height for better spacing */
+}
+
+@media (min-width: 768px) {
+    .stats-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Multi-column layout for larger screens */
+        gap: 1rem; /* Increased gap */
+        padding: 2rem;
+        margin: 2rem auto;
+        max-width: 1200px;
+    }
+
+    .stat-item h3 {
+        font-size: 2rem;
+    }
+
+    .stat-item p {
+        font-size: 1rem;
+    }
+
+    .stat-icon {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+.animated-text {
+    display: inline-flex;
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.animated-text span {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animated-text span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.animated-text span:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.animated-text span:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.animated-text span:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.animated-text span:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+.animated-text span:nth-child(6) {
+    animation-delay: 0.5s;
+}
+
+.animated-text span:nth-child(7) {
+    animation-delay: 0.6s;
+}
+
+.animated-text span:nth-child(8) {
+    animation-delay: 0.7s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+    </style>
+   
+
+</head>
+<body>
+
+    <nav>
+        <div class="logo hidden">
+            <img src="images/logo.png" alt="ChatRizz Logo" class="logo-image" />
+            ChatRizz
+        </div>
+        <button class="menu-toggle" id="menu-toggle">&#9776;</button>
+        <div class="nav-links hidden" id="nav-links">
+            <button class="close-menu hidden" id="close-menu">&times;</button>
+            <a href="#apply" id="apply-button">Contact Us</a>
+            <a href="#about">About Us</a>    
+            <a href="#faq" id="faqs">FAQs</a>
+            <a href="#services" id="account">Sign Up/Log In</a>
+        </div>
+    </nav>
+    
+    <a href="https://wa.me/17046522396 " target="_blank" class="whatsapp-float">
+        <img src="images/whatsapp.png" alt="WhatsApp" class="whatsapp-icon">
+    </a>
+
+        
+<div class="hero-section hidden">
+    <div id="home">
+        <h1 id="dynamic-text" class="fade-slide hidden">Boost Productivity with ChatRizz Plus!</h1>
+
+    </div>
+    <div class="review-heading hidden">
+        <div class="timer-description hidden">
+            Hurry! Get ChatRizz Plus at ₹499 Offer Ends Soon!
+        </div>
+        <div class="timer hidden" id="countdown">00:00:00</div>
+    </div>
+    <div class="apply-button-container">
+        <a href="#apply" class="apply-button hidden" id=apply-button2>Use ChatGPT</a>
+</div>
+       </section>
+    </div>
+
+    <section>
+        <h2 id="dynamic-text"class="review-heading hidden fade-slide">Numbers That Speak for Our Success</h2>
+        <div class="stats-container hidden">
+            <div class="stat-item">
+                <img src="images/graduation.gif" alt="Students" class="stat-icon hidden">
+                <h3 class="hidden">200M+</h3>
+                <p class="hidden">People who have joined ChatGPT.</p>
+            </div>
+            <div class="stat-item">
+                <img src="images/visa.gif" alt="Visa" class="stat-icon hidden">
+                <h3 class="hidden">95%</h3>
+                <p class="hidden"> Ratings by our clients.</p>
+            </div>
+            <div class="stat-item">
+                <img src="images/loans.gif" alt="Loans" class="stat-icon hidden">
+                <h3 class="hidden">$300M+</h3>
+                <p class="hidden"> Revenue by Chat GPT .</p>
+            </div>
+            <div class="stat-item">
+                <img src="images/globe.gif" alt="University Partnerships" class="stat-icon hidden">
+                <h3 class="hidden">1500+</h3>
+                <p class="hidden">University partnerships across the US.</p>
+            </div>
+            <div class="stat-item">
+                <img src="images/phone.gif" alt="Support" class="stat-icon hidden">
+                <h3 class="hidden">24/7</h3>
+                <p class="hidden">Support provided for pre- and post-arrival assistance.</p>
+            </div>
+            <div class="stat-item">
+                <img src="images/businessman.gif" alt="Experience" class="stat-icon hidden">
+                <h3 class="hidden">2+ Years</h3>
+                <p class="hidden">Since ChatGPT is rolled out.</p>
+            </div>
+            <div class="stat-item">
+                <img src="images/certificate.gif" alt="Scholarships" class="stat-icon hidden">
+                <h3 class="hidden">100%</h3>
+                <p class="hidden">Server Availiblity</p>
+            </div>
+            <div class="stat-item">
+                <img src="images/rating.gif" alt="Satisfaction" class="stat-icon hidden">
+                <h3 class="hidden">4.9/5</h3>
+                <p class="hidden">Average client satisfaction rating.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="reviews" class="reviews hidden fade-slide">
+        <h2 id="dynamic-text" class="review-heading">What Our Users Have to Say</h2>
+        
+        <div class="review-container">
+            <div class="review-card active">
+                <div class="stars">★★★★★</div>
+                <h3 class="hidden">"A Game-Changer for Productivity!"</h3>
+                <p class="hidden">ChatRizz Plus has transformed the way I work. I can now get quicker and more accurate responses with zero delays. This service has made my research and writing processes so much faster. It’s like having a superpower at my fingertips, and the price of ₹499 makes it an absolute steal!</p>
+                <p class="reviewer hidden">
+                    <img class="hidden" src="images/people-1.jpg" alt="Ravi Teja" />
+                    - Ravi Teja, User
+                </p>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <h3 class="hidden">"Unbelievable Value for Money!"</h3>
+                <p class="hidden">
+                    I’ve used several AI tools before, but nothing compares to ChatRizz Plus. It’s fast, reliable, and so easy to use. The price of ₹499 is unbelievable for the service you get. I’ve been using it for weeks, and it’s saved me countless hours. Highly recommend!</p>
+                <p class="reviewer hidden">
+                    <img class="hidden" src="images/people-6.jpg" alt="Swathi Reddy." />
+                    - Swathi Reddy, User
+                </p>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <h3 class="hidden">"Transformative Tool for Professionals!"</h3>
+                <p class="hidden">ChatRizz Plus is a lifesaver. Whether I need help drafting emails, generating ideas, or getting quick explanations, this tool does it all—and at such an affordable price. I can’t imagine working without it now!</p>
+                <p class="reviewer hidden">
+                    <img class="hidden" src="images/people-2.jpg" alt="Vikram Goud" />
+                    - Vikram Goud, Professional
+                </p>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <h3 class="hidden">"Instant, Accurate, and Efficient!"</h3>
+                <p class="hidden">
+                    ChatRizz Plus is a fantastic tool for anyone who needs quick, accurate answers. It’s incredibly reliable, and the 499 subscription gives me access to everything I need without breaking the bank. I recommend it to all my colleagues!</p>
+                <p class="reviewer hidden">
+                    <img class="hidden" src="images/people-7.jpg" alt="Priya M." />
+                    - Priya Rao, Entrepreneur
+                </p>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <h3 class="hidden">"Supercharge Your Workflow!"</h3>
+                <p class="hidden">The speed and accuracy of ChatRizz Plus is truly amazing. It’s been a game-changer in streamlining my workflow. Whether I need to brainstorm ideas or analyze data, it’s always there to help, and at a very affordable ₹499!</p>
+                <p class="reviewer hidden">
+                    <img class="hidden" src="images/people-4.png" alt="Suresh Yadav" />
+                    - Suresh Yadav, Content Creator
+                </p>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <h3 class="hidden">"Perfect Tool for Writers and Creatives!"</h3>
+                <p class="hidden">
+                    As a writer, ChatRizz Plus has been indispensable. It helps me generate ideas, refine my drafts, and even overcome writer’s block. The best part? It’s incredibly affordable at just ₹499. Every writer should try this!</p>
+                <p class="reviewer hidden">
+                    <img class="hidden" src="images/people-8.jpg" alt="Kevin T." />
+                    - Anusha Reddy, Writer
+                </p>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <h3 class="hidden">"A Must-Have for Entrepreneurs!"</h3>
+                <p class="hidden">ChatRizz Plus is a must-have tool for entrepreneurs like me. It helps me with everything from generating business ideas to writing proposals and emails. The fact that it’s only ₹499 makes it one of the best investments I’ve made.</p>
+                <p class="reviewer hidden">
+                    <img class="hidden" src="images/people-5.jpeg" alt="Arjun Varma" />
+                    - Arjun Varma, Entrepreneur
+                </p>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <h3 class="hidden">"Instant Help Whenever You Need It!"</h3>
+                <p class="hidden">ChatRizz Plus has been invaluable for my day-to-day tasks. Whether it’s answering questions or helping me write reports, it’s fast, accurate, and easy to use. The ₹499 subscription is totally worth it!</p>
+                <p class="reviewer hidden">
+                    <img class="hidden" src="images/people-9.jpg" alt="Bhavana Rao" />
+                    - Bhavana Rao, Analyst
+                </p>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <h3 class="hidden">"A Powerful Tool at an Amazing Price!"</h3>
+                <p class="hidden">
+                    ChatRizz Plus is a powerhouse. I use it for everything—writing, research, and brainstorming. The speed and accuracy are top-notch, and at ₹499, it’s a total steal. I’m never going back!</p>
+                <p class="reviewer hidden">
+                    <img class="hidden" src="images/people-3.jpg" alt="Karthik Reddy" />
+                    - Karthik Reddy, Developer
+                </p>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <h3 class="hidden">"Your Secret Weapon for Efficiency!"</h3>
+                <p class="hidden">
+                    ChatRizz Plus is my secret weapon for getting things done quickly. From answering questions to drafting content, it saves me time and energy. The value for ₹499 is unmatched!</p>
+                <p class="reviewer hidden">
+                    <img class="hidden" src="images/people-10.jpg" alt="Lakshmi Prasanna" />
+                    - Lakshmi Prasanna, Consultant
+                </p>
+            </div>
+        </div>
+    </section>
+    
+   
+    
+  <section id="services" class="hidden">
+  
+       
+   
+    <div class="service-block hidden"id="about">
+
+      <h2 id="dynamic-text" class=" hidden">ChatRizz</h2>
+      <div class="hidden">
+          <p class="hidden">ChatRizz Edu believes in the power of education to transform lives. With over a decade of experience, we provide holistic support to students aspiring to study abroad, equipping them to become global changemakers.</p>
+          <a href="about.html" class="button hidden">Read More</a>
+      </div>
+
+
+</section>
+
+<div id="popup" class="popup hidden">
+    <button class="popup-close hidden" onclick="closePopup()">&times;</button>
+    <img id="popupImage" class="popup-image hidden" src="" alt="Profile">
+    <div>
+        <div class="popup-header hidden">Congrats !</div>
+        <div id="popupText" class="popup-content hidden">Loading...</div>
+    </div>
+</div>
+<footer>
+    <p>&copy; 2025 ChatRizz. All Rights Reserved.</p>
+    <div class="social-media-links hidden">
+        <a href="https://wa.me/17046522396" target="_blank" class="social-link whatsapp hidden">
+            <img src="images/whatsapp.png" alt="WhatsApp" />
+        </a>
+        <a href="https://t.me/+7sELas_gyp9kYmUx" target="_blank" class="social-link telegram hidden">
+            <img src="images/telegram.png" alt="Telegram" />
+        </a>
+        <a href="https://www.instagram.com/hanu_edu" target="_blank" class="social-link instagram hidden">
+            <img src="images/instagram.png" alt="Instagram" />
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61569985835293" target="_blank" class="social-link instagram hidden">
+            <img src="images/facebook.png" alt="Facebook" />
+        </a>
+    </div>
+    <style>
+        .social-media-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .social-link img {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease;
+        }
+        .social-link img:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</footer>
+
+    <!-- Overlay and Questionnaire Dialog -->
+    <div id="overlay"></div>
+<div id="questionnaire">
+    <h2>Quick Questionnaire</h2>
+    <div class="question"></div>
+    <div class="options"></div>
+    <div class="progress">
+        <div class="progress-bar"></div>
+    </div>
+    <div class="dialog-buttons">
+        <button id="next-button">Next</button>
+        <button id="close-button">Close</button>
+    </div>
+</div>
+
+<div id="custom-alert" class="hidden">
+    <div class="custom-alert-content">
+        <p id="custom-alert-message"></p>
+        <button id="custom-alert-close">OK</button>
+    </div>
+</div>
+
+<style>
+    #overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        display: none;
+    }
+
+    #questionnaire {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        max-width: 500px;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        z-index: 1100;
+        display: none;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    #custom-alert {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1200;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    #custom-alert.hidden {
+        display: none;
+    }
+
+    .custom-alert-content {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        max-width: 400px;
+        width: 80%;
+    }
+
+    .custom-alert-content p {
+        margin-bottom: 20px;
+    }
+
+    .custom-alert-content button {
+        padding: 10px 20px;
+        background-color: #000000;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .custom-alert-content button:hover {
+        background-color: #ffd700;
+        color: #00264d;
+    }
+   
+    .popup {
+            position: fixed;
+            bottom: 70px;
+            right: -300px;
+            width: 250px;
+            background: #000000;
+            color: white;
+            padding: 0.8rem 1rem;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transition: right 0.5s ease;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .popup.show {
+            right: 20px;
+        }
+
+        .popup-header {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+         
+        }
+
+        .popup-content {
+            font-size: 0.9rem;
+            flex-grow: 1;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            color: white;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .popup-close:hover {
+            transform: scale(1.2);
+        }
+
+        .popup-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            object-fit: cover;
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            .popup {
+                width: 220px;
+                padding: 0.8rem;
+            }
+
+            .popup-header {
+                font-size: 1rem;
+            }
+
+            .popup-content {
+                font-size: 0.85rem;
+            }
+        }
+
+
+.nav-links a {
+    padding: 1rem; /* Adjust padding for elements with text */
+    font-family: 'Poppins', sans-serif; /* Ensure Poppins font is applied */
+
+}
+
+    </style>
+    
+</style>
+
+<script>
+const menuToggle = document.getElementById("menu-toggle");
+const closeMenu = document.getElementById("close-menu");
+const navLinks = document.getElementById("nav-links");
+
+// Show the menu
+menuToggle.addEventListener("click", () => {
+    navLinks.classList.add("show");
+    menuToggle.classList.add("hidden");
+});
+
+// Hide the menu using the close button
+closeMenu.addEventListener("click", () => {
+    navLinks.classList.remove("show");
+    menuToggle.classList.remove("hidden");
+});
+
+// Optional: Clicking outside the menu to close it
+document.addEventListener("click", (event) => {
+    if (!navLinks.contains(event.target) && !menuToggle.contains(event.target)) {
+        navLinks.classList.remove("show");
+        menuToggle.classList.remove("hidden");
+    }
+});
+
+const reviewContainer = document.querySelector('.review-container');
+const reviewCards = document.querySelectorAll('.review-card');
+let autoScrollInterval;
+let currentIndex = 0;
+
+// Function to update active card visually
+function updateActiveCard(index) {
+    reviewCards.forEach((card, i) => {
+        card.classList.toggle('active', i === index);
+    });
+}
+
+// Function to scroll to the current card
+function scrollToCard(index) {
+    reviewContainer.scrollTo({
+        left: index * reviewCards[0].offsetWidth,
+        behavior: 'smooth', // Smooth scrolling
+    });
+}
+
+// Auto-scroll logic with boundaries
+function autoScrollReviews() {
+    currentIndex = (currentIndex + 1) % reviewCards.length; // Loop back to the first card
+    scrollToCard(currentIndex);
+    updateActiveCard(currentIndex);
+}
+
+// Start auto-scrolling
+function startAutoScroll() {
+    autoScrollInterval = setInterval(autoScrollReviews, 3000); // Change every 3 seconds
+}
+
+// Stop auto-scrolling
+function stopAutoScroll() {
+    clearInterval(autoScrollInterval);
+}
+
+// Handle swipe gestures for mobile
+let startX = 0;
+
+function handleTouchStart(event) {
+    startX = event.touches[0].clientX; // Track the initial touch position
+}
+
+function handleTouchEnd(event) {
+    const endX = event.changedTouches[0].clientX;
+    if (startX - endX > 50) {
+        // Swipe left
+        currentIndex = Math.min(currentIndex + 1, reviewCards.length - 1);
+    } else if (endX - startX > 50) {
+        // Swipe right
+        currentIndex = Math.max(currentIndex - 1, 0);
+    }
+    scrollToCard(currentIndex);
+    updateActiveCard(currentIndex);
+}
+
+// Add event listeners
+reviewContainer.addEventListener('mouseenter', stopAutoScroll);
+reviewContainer.addEventListener('mouseleave', startAutoScroll);
+reviewContainer.addEventListener('touchstart', handleTouchStart, { passive: true });
+reviewContainer.addEventListener('touchend', handleTouchEnd, { passive: true });
+
+// Initialize the auto-scroll
+startAutoScroll();
+
+   
+
+    let currentQuestion = 0;
+  let questionnaireResponses = [];
+    const account = document.getElementById("account");
+    const faq= document.getElementById("faqs");
+    const applyButton2 = document.getElementById("apply-button2");
+    const track = document.getElementById("track");
+    const overlay = document.getElementById("overlay");
+    const questionnaire = document.getElementById("questionnaire");
+    const questionDiv = questionnaire.querySelector(".question");
+    const optionsDiv = questionnaire.querySelector(".options");
+    const progressBar = questionnaire.querySelector(".progress-bar");
+    const nextButton = document.getElementById("next-button");
+    const closeButton = document.getElementById("close-button");
+    const customAlert = document.getElementById("custom-alert");
+    const customAlertMessage = document.getElementById("custom-alert-message");
+    const customAlertClose = document.getElementById("custom-alert-close");
+
+    function showCustomAlert(message, callback) {
+        customAlertMessage.textContent = message;
+        customAlert.classList.remove("hidden");
+        customAlertClose.onclick = () => {
+            customAlert.classList.add("hidden");
+            if (callback) callback();
+        };
+    }
+
+
+    function showQuestion(index) {
+        questionDiv.textContent = questions[index].question;
+        optionsDiv.innerHTML = "";
+        questions[index].options.forEach(option => {
+            const label = document.createElement("label");
+            const input = document.createElement("input");
+            input.type = "radio";
+            input.name = "option";
+            input.value = option;
+            label.appendChild(input);
+            label.appendChild(document.createTextNode(option));
+            optionsDiv.appendChild(label);
+        });
+        progressBar.style.width = ((index + 1) / questions.length) * 100 + "%";
+    }
+   
+    account.addEventListener("click", () => {
+        window.location.href = "login.html"; 
+    });
+    applyButton2.addEventListener("click", () => {
+        window.location.href = "chat.html";
+    });
+    faq.addEventListener("click",()=>{
+        window.location.href = "./pages/faq.html"; 
+    });
+    mock_test.addEventListener("click", () => {
+        window.location.href = "choose_test.html";
+    });
+
+   
+
+    
+    track.addEventListener("click",()=>{
+        window.location.href = "track_application.html";
+    });
+        
+    document.addEventListener('DOMContentLoaded', () => {
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+
+                if (answer.classList.contains('show')) {
+                    answer.classList.remove('show');
+                } else {
+                    document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('show'));
+                    answer.classList.add('show');
+                }
+            });
+        });
+    });
+    const messages = [
+    { text: "Raj has purchased the ChatGPT Plus subscription.", image: "images/notifications_avatar/boy1.png" },
+{ text: "Arjun has upgraded to the ChatGPT Premium plan.", image: "images/notifications_avatar/boy1.png" },
+{ text: "42 users have purchased the ChatGPT Pro subscription today!", image: "images/notifications_avatar/boy1.png" },
+{ text: "Priya has subscribed to the ChatGPT Yearly plan.", image: "images/notifications_avatar/girl1.png" },
+{ text: "Meera has purchased the ChatGPT Pro plan.", image: "images/notifications_avatar/girl1.png" },
+{ text: "Amit has bought the ChatGPT Premium subscription.", image: "images/notifications_avatar/boy1.png" },
+{ text: "Anjali has purchased the ChatGPT Plus plan.", image: "images/notifications_avatar/girl1.png" },
+{ text: "Vikram has subscribed to the ChatGPT Monthly plan.", image: "images/notifications_avatar/boy1.png" },
+{ text: "Sanya has upgraded to the ChatGPT Pro subscription.", image: "images/notifications_avatar/girl1.png" },
+{ text: "Rohan has purchased the ChatGPT Premium subscription.", image: "images/notifications_avatar/boy1.png" },
+{ text: "Neha has subscribed to the ChatGPT Plus plan.", image: "images/notifications_avatar/girl1.png" },
+{ text: "Karan has purchased the ChatGPT Yearly subscription.", image: "images/notifications_avatar/boy1.png" },
+{ text: "Ishita has upgraded to the ChatGPT Pro plan.", image: "images/notifications_avatar/girl1.png" },
+{ text: "Akash has purchased the ChatGPT Premium plan.", image: "images/notifications_avatar/boy1.png" },
+{ text: "Rajat has subscribed to the ChatGPT Monthly plan.", image: "images/notifications_avatar/boy1.png" },
+{ text: "Manish has upgraded to the ChatGPT Yearly subscription.", image: "images/notifications_avatar/boy1.png" },
+{ text: "Riya has purchased the ChatGPT Pro subscription.", image: "images/notifications_avatar/girl1.png" },
+{ text: "Aditya has subscribed to the ChatGPT Premium plan.", image: "images/notifications_avatar/boy1.png" },
+{ text: "Shreya has upgraded to the ChatGPT Plus plan.", image: "images/notifications_avatar/girl1.png" },
+{ text: "Abhay has purchased the ChatGPT Pro subscription.", image: "images/notifications_avatar/boy1.png" },
+{ text: "Pooja has subscribed to the ChatGPT Plus plan.", image: "images/notifications_avatar/girl1.png" },
+{ text: "Ananya has purchased the ChatGPT Yearly subscription.", image: "images/notifications_avatar/girl1.png" },
+{ text: "Mira has subscribed to the ChatGPT Monthly plan.", image: "images/notifications_avatar/girl1.png" },
+{ text: "Kabir has purchased the ChatGPT Pro plan.", image: "images/notifications_avatar/boy1.png" },
+{ text: "Tanya has upgraded to the ChatGPT Plus subscription.", image: "images/notifications_avatar/girl1.png" },
+{ text: "Dev has purchased the ChatGPT Premium plan.", image: "images/notifications_avatar/boy1.png" },
+{ text: "Rishi has subscribed to the ChatGPT Pro subscription.", image: "images/notifications_avatar/boy1.png" },
+{ text: "Anusha has purchased the ChatGPT Plus plan.", image: "images/notifications_avatar/girl1.png" },
+{ text: "Siddharth has subscribed to the ChatGPT Monthly plan.", image: "images/notifications_avatar/boy1.png" },
+{ text: "Naina has purchased the ChatGPT Yearly subscription.", image: "images/notifications_avatar/girl1.png" },
+{ text: "Armaan has upgraded to the ChatGPT Premium plan.", image: "images/notifications_avatar/boy1.png" },
+{ text: "Aarti has purchased the ChatGPT Plus plan.", image: "images/notifications_avatar/girl1.png" },
+{ text: "Harsh has subscribed to the ChatGPT Monthly subscription.", image: "images/notifications_avatar/boy1.png" },
+{ text: "Tanvi has purchased the ChatGPT Pro plan.", image: "images/notifications_avatar/girl1.png" },
+{ text: "Ayaan has upgraded to the ChatGPT Premium subscription.", image: "images/notifications_avatar/boy1.png" },
+{ text: "Isha has subscribed to the ChatGPT Plus plan.", image: "images/notifications_avatar/girl1.png" },
+{ text: "Siddharth has purchased the ChatGPT Yearly subscription.", image: "images/notifications_avatar/boy1.png" },
+{ text: "Radhika has subscribed to the ChatGPT Pro plan.", image: "images/notifications_avatar/girl1.png" },
+{ text: "Shivani has purchased the ChatGPT Monthly subscription.", image: "images/notifications_avatar/girl1.png" }
+
+];
+
+
+        function showPopup() {
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            document.getElementById("popupText").textContent = randomMessage.text;
+            document.getElementById("popupImage").src = randomMessage.image;
+            document.getElementById("popup").classList.add("show");
+
+            setTimeout(() => {
+                document.getElementById("popup").classList.remove("show");
+            }, 5000); // Popup disappears after 5 seconds
+        }
+
+        function closePopup() {
+            document.getElementById("popup").classList.remove("show");
+        }
+
+        // Show a new popup every 10 seconds
+        setInterval(showPopup, 10000);
+    </script>
+</script>
+<script>
+    function startCountdown() {
+        const countdownElement = document.getElementById('countdown');
+        const savedTargetTime = localStorage.getItem('targetTime');
+        let targetTime;
+
+        if (savedTargetTime) {
+            targetTime = parseInt(savedTargetTime, 10);
+        } else {
+            targetTime = new Date().getTime() + 15 * 3600 * 1000 + 25 * 60 * 1000 + 17 * 1000; // 15:25:17
+            localStorage.setItem('targetTime', targetTime);
+        }
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const timeLeft = targetTime - now;
+
+            if (timeLeft > 0) {
+                const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
+                const seconds = Math.floor((timeLeft / 1000) % 60);
+
+                countdownElement.textContent = `Time left to avail offer: ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            } else {
+                countdownElement.textContent = 'Free counseling offer has ended!';
+                localStorage.removeItem('targetTime');
+            }
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    }
+
+    startCountdown();
+
+
+const text = document.getElementById("dynamic-text");
+const words = text.textContent.split(" ");
+text.innerHTML = ""; // Clear original text
+
+words.forEach((word, index) => {
+    const span = document.createElement("span");
+    span.textContent = word;
+    span.style.opacity = 0;
+    span.style.display = "inline-block";
+    span.style.transition = `opacity 0.2s ease ${index * 0.2}s, transform 0.2s ease ${index * 0.2}s`;
+    span.style.transform = "translateY(20px)";
+    text.appendChild(span);
+    text.appendChild(document.createTextNode(" ")); // Add space between words
+
+    // Trigger animation
+    setTimeout(() => {
+        span.style.opacity = 1;
+        span.style.transform = "translateY(0)";
+    }, index * 1);
+});
+
+// Function to animate text
+function animateText(text) {
+    const words = text.textContent.split(" ");
+    text.innerHTML = ""; // Clear original text
+
+    words.forEach((word, index) => {
+        const span = document.createElement("span");
+        span.textContent = word;
+        span.style.opacity = 0;
+        span.style.display = "inline-block";
+        span.style.transition = `opacity 0.2s ease ${index * 0.2}s, transform 0.2s ease ${index * 0.2}s`;
+        span.style.transform = "translateY(20px)";
+        text.appendChild(span);
+        text.appendChild(document.createTextNode(" ")); // Add space between words
+
+        // Trigger animation
+        setTimeout(() => {
+            span.style.opacity = 1;
+            span.style.transform = "translateY(0)";
+        }, index * 10); // Delay of 10ms per word
+    });
+}
+
+// Intersection Observer to trigger animation when visible
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            animateText(entry.target);
+            observer.unobserve(entry.target); // Stop observing after animation starts
+        }
+    });
+},{ threshold: 0.5 });
+
+// Observe all elements with #dynamic-text
+const textElements = document.querySelectorAll("#dynamic-text");
+textElements.forEach((text) => observer.observe(text));
+
+</script>
+</body>
+</html>
