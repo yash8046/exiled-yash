@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs</title>
+   
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: url('https://media-hosting.imagekit.io//30106a062643411c/1737847924678.jpg?Expires=1832456046&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=BzPc4XyvJPH7fWgQ816RNzbhADDjk~7Pf7NLZgP7n3gsr9L9iNUD8PA595Fgx16nBoR7o2t6o8p-gRgQWrgmu8cPsiNIJ2q31BvXquTNOMoabOV-5~nwSplB3zxHWNNs~ipVr1Mn~7nNS2PE~VyMh1tasHL6ZpomtBPQndk1~I9XbZeR-uy167ZSW1kDhQrdmQhUssEel2ElzdazmTg7q71DVj8-fTJyqUOcAzXi0qPIqYQawBUGQjIVya6eXlF5iSQhp5Sffj0rHQUcVzoxJFc3rrzyrG1ZreFzqxF563APVJYKBqPsvz7kiKvnpIT3iC6Ue92e6M1Shz6qJL9ZJw__') no-repeat center center fixed; background-size: cover;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: rgba(0, 38, 77, 0.9);
+            padding: 0.5rem 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            font-weight: 500;
+            border-radius: 30px;
+            background-color: rgba(0, 77, 153, 0.7);
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: #ffd700;
+            color: #00264d;
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .tracking-container {
+            margin: 2rem auto;
+            padding: 2rem;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.582);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .tracking-container h1 {
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            color: #000000;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group button {
+            padding: 0.8rem 2rem;
+            border: none;
+            background-color: #004d99;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-group button:hover {
+            background-color: #000000;
+            color: #00264d;
+        }
+
+        .tracking-result {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            display: none;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: auto;
+        }
+        .faq-container .faq-question {
+    background-color: #000000;
+    color: white;
+    border: none;
+    width: 100%;
+    text-align: left;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.faq-container .faq-question:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+
+.faq-container .faq-answer {
+    display: none;
+    padding: 1rem;
+    background-color: rgba(233, 236, 239, 0.8);
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+.faq-container .faq-answer.show {
+    display: block;
+}
+
+.faq-container .faq-answer,
+.faq-container .faq-question,
+.tracking-container h1,
+.form-group label,
+.form-group input,
+.form-group button,
+.nav-links a {
+    padding: 1rem; /* Adjust padding for elements with text */
+    font-family: 'Poppins', sans-serif; /* Ensure Poppins font is applied */
+
+}
+.faq-container {
+    padding: 2rem; /* Add space inside the container on all sides */
+}
+
+.faq-container .faq-question {
+    background-color: #000000;
+    color: white;
+    border: none;
+    width: 100%;
+    text-align: left;
+    padding: 1.5rem; /* Increased padding for the question */
+    font-size: 1rem;
+    font-weight: 400; /* Reduced font weight */
+    border-radius: 20px;
+    cursor: pointer;
+    margin-bottom: 1rem; /* Space between questions */
+    transition: background-color 0.3s ease;
+}
+
+.faq-container .faq-question:hover {
+    background-color: #a0a0a07a;
+    color: #000000;
+}
+
+.faq-block {
+  flex: 1 1 calc(33.333% - 20px); /* 3 blocks per row */
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 1rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  font-family: 'Poppins', sans-serif;
+  margin: 30px;
+}
+
+.faq-block h2 {
+    color: #000000;
+    text-align: center;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ChatRizz FAQs<h1>
+    </header>
+
+    <div class="faq-block hidden fade-slide" id="faq">
+      <div class="faq-container">
+          <h2 id="dynamic-text">Frequently Asked Questions</h2>
+          <div class="faq-item">
+              <button class="faq-question">What is the AI Pooling Platform?</button>
+              <div class="faq-answer">
+                  <p>The AI Pooling Platform is a collaborative online space where students can access cutting-edge AI tools at a fraction of the typical subscription cost. By pooling resources, we ensure that these advanced technologies are available to all students, regardless of their financial situation. It’s like a shared digital resource center for AI, designed to optimize access, reduce waste, and promote efficiency.</p>
+              </div>
+          </div>
+          <div class="faq-item">
+              <button class="faq-question">What types of AI tools are available on the platform?</button>
+              <div class="faq-answer">
+                  <p>The platform offers a variety of AI tools, including those for data analysis, machine learning, natural language processing, computer vision, and more. These tools can be used for academic research, personal projects, coding, and even hands-on learning. We continue to expand the range of tools to cater to a variety of student needs.</p>
+              </div>
+          </div>
+          <div class="faq-item">
+              <button class="faq-question">Why is AI Pooling necessary for students?</button>
+              <div class="faq-answer">
+                  <p>AI tools can be prohibitively expensive for students, particularly those who are just starting their academic or research careers. AI Pooling ensures that students can access high-quality resources without the burden of expensive subscriptions, helping to level the playing field in education. This allows all students, regardless of financial background, to harness the power of AI in their studies.</p>
+              </div>
+          </div>
+          <div class="faq-item">
+              <button class="faq-question">How do I access the AI Pooling Platform?</button>
+              <div class="faq-answer">
+                  <p>You can sign up for the platform directly on our website. After registration, you’ll be able to access the full suite of AI tools and resources available to students. Depending on the tier of your subscription (free or paid), you’ll have access to different levels of tools and resources.</p>
+              </div>
+          </div>
+          <div class="faq-item">
+              <button class="faq-question">How much does it cost to use the AI Pooling Platform?</button>
+              <div class="faq-answer">
+                  <p>We offer a variety of subscription models to make AI tools as accessible as possible. There’s a low-cost plan that gives access to a wide range of tools, and for those who can’t afford even that, there’s a free version with limited access. The goal is to keep costs as low as possible while ensuring sustainability for the platform.</p>
+              </div>
+          </div>
+          <div class="faq-item">
+              <button class="faq-question">How can schools or institutions get involved?</button>
+              <div class="faq-answer">
+                  <p>We welcome partnerships with educational institutions. Schools, universities, or organizations interested in offering the AI Pooling Platform to their students can reach out to us directly to discuss partnership opportunities, custom plans, and implementation.</p>
+              </div>
+          </div>
+          <div class="faq-item">
+              <button class="faq-question">What’s next for the AI Pooling Platform?</button>
+              <div class="faq-answer">
+                  <p>We are constantly improving the platform by adding new tools, features, and expanding access to more students. We are also exploring collaborations with AI tool developers and academic institutions to continue enhancing the learning experience and creating new opportunities for students worldwide.</p>
+              </div>
+          </div>
+          <div class="faq-item">
+              <button class="faq-question">Is my data safe when using the shared server?</button>
+              <div class="faq-answer">
+                  <p>Absolutely. While multiple users share the server, each user's data, activities, and sessions are securely isolated through individual private modes. Our security protocols ensure that your information is kept private, and we use encryption to protect your data.</p>
+              </div>
+          </div>
+          <div class="faq-item">
+              <button class="faq-question">Can I access the platform on multiple devices?</button>
+              <div class="faq-answer">
+                  <p>Yes, you can access your private mode and the AI tools from any device with an internet connection. Whether you're on a laptop, tablet, or smartphone, your private session remains secure and accessible wherever you go.</p>
+              </div>
+          </div>
+          <div class="faq-item">
+              <button class="faq-question">What happens when my subscription expires?</button>
+              <div class="faq-answer">
+                  <p>Once your subscription reaches its expiration date, the automated scheduling system will deactivate your services. You will receive a notification ahead of time, and if you choose to renew, your services will be reactivated without any delays.</p>
+              </div>
+          </div>
+          <div class="faq-item">
+              <button class="faq-question">Is there customer support if I run into issues?</button>
+              <div class="faq-answer">
+                  <p>Yes, we provide customer support to assist with any issues or questions you might encounter. Whether you need help navigating the platform, managing your subscription, or troubleshooting, our team is available to ensure you have a smooth experience.</p>
+              </div>
+          </div>
+          <div class="faq-item">
+              <button class="faq-question">How do I access ChatRizz Plus?</button>
+              <div class="faq-answer">
+                  <p>Once you sign up, you'll get immediate access to all the premium features directly through your account.</p>
+              </div>
+          </div>
+          <div class="faq-item">
+              <button class="faq-question">Is the 5499 price a one-time payment?</button>
+              <div class="faq-answer">
+                  <p>The 5499 is for a subscription period annually . You can easily cancel anytime if you're not satisfied.</p>
+              </div>
+          </div>
+          <div class="faq-item">
+              <button class="faq-question">Can I use ChatRizz Plus for any task?</button>
+              <div class="faq-answer">
+                  <p>Yes! ChatRizz Plus can help with a variety of tasks including writing, research, generating ideas, and more.</p>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+    
+    <footer>
+        <p>&copy; 2025 ChatRizz . All Rights Reserved.</p>
+    </footer>
+
+    <!-- Load the Supabase library -->
+  
+  <script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+
+                if (answer.classList.contains('show')) {
+                    answer.classList.remove('show');
+                } else {
+                    document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('show'));
+                    answer.classList.add('show');
+                }
+            });
+        });
+    });
+
+// Function to animate text
+function animateText(text) {
+    const words = text.textContent.split(" ");
+    text.innerHTML = ""; // Clear original text
+
+    words.forEach((word, index) => {
+        const span = document.createElement("span");
+        span.textContent = word;
+        span.style.opacity = 0;
+        span.style.display = "inline-block";
+        span.style.transition = `opacity 0.2s ease ${index * 0.2}s, transform 0.2s ease ${index * 0.2}s`;
+        span.style.transform = "translateY(20px)";
+        text.appendChild(span);
+        text.appendChild(document.createTextNode(" ")); // Add space between words
+
+        // Trigger animation
+        setTimeout(() => {
+            span.style.opacity = 1;
+            span.style.transform = "translateY(0)";
+        }, index * 10); // Delay of 10ms per word
+    });
+}
+
+// Intersection Observer to trigger animation when visible
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            animateText(entry.target);
+            observer.unobserve(entry.target); // Stop observing after animation starts
+        }
+    });
+},{ threshold: 0.5 });
+
+// Observe all elements with #dynamic-text
+const textElements = document.querySelectorAll("#dynamic-text");
+textElements.forEach((text) => observer.observe(text));
+</script>
+
+
+
+ 
+</body>
+</html>
