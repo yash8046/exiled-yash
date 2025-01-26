@@ -12,7 +12,7 @@ const OPENAI_CHAT_API_URL = "https://api.openai.com/v1/chat/completions";
 const OPENAI_IMAGE_API_URL = "https://api.openai.com/v1/images/generations";
 
 // Endpoint for text/chat generation
-app.post("api/chat", async (req, res) => {
+app.post("/api/chat", async (req, res) => {
   const { prompt } = req.body;
 
   if (!prompt || typeof prompt !== "string") {

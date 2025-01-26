@@ -11,7 +11,7 @@ const API_KEY = "sk-proj-s4Rx-YuL6hQNQ2H5mENTmZ1sVBrvXpV9fsDveMPpk6BgGBze95PlLc5
 const OPENAI_CHAT_API_URL = "https://api.openai.com/v1/chat/completions";
 const OPENAI_IMAGE_API_URL = "https://api.openai.com/v1/images/generations";
 // Endpoint for image generation
-app.post("api/image", async (req, res) => {
+app.post("/api/image", async (req, res) => {
   const { prompt, n = 1, size = "1024x1024" } = req.body;
 
   if (!prompt || typeof prompt !== "string") {
