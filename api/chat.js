@@ -28,7 +28,7 @@ app.post("/api/chat", async (req, res) => {
       {
         model: "gpt-4",
         messages: [{ role: "user", content: prompt }],
-        max_tokens: 100000, // Increase token limit for longer responses
+        max_tokens: 4096, // Increase token limit for longer responses
         temperature: 0.1,  // Balance between creativity and focus
         top_p: 0.1,          // Use full token distribution for creative responses
         frequency_penalty: 0, // No penalty for repeated phrases
