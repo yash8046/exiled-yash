@@ -236,7 +236,7 @@
     const isImageRequest = prompt.toLowerCase().startsWith("generate image:") || 
                            prompt.toLowerCase().includes("image");
 
-    const endpoint = isImageRequest ? "http://localhost:8080/api/image" : "http://localhost:8080/api/chat";
+    const endpoint = isImageRequest ? "https://hackathon-sand-six.vercel.app/api/image" : "https://hackathon-sand-six.vercel.app/api/chat";
     const payload = isImageRequest
       ? { prompt: prompt.replace(/generate image:/i, "").trim(), n: 1, size: "1024x1024" }
       : { prompt };
