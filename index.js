@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use(express.json());
 require('dotenv').config();
 
-const API_KEY = process.env.OPEN_API_KEY;
+
 
 const OPENAI_CHAT_API_URL = "https://api.openai.com/v1/chat/completions";
 const OPENAI_IMAGE_API_URL = "https://api.openai.com/v1/images/generations";

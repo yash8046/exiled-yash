@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
-const API_KEY = process.env.OPEN_API_KEY;
+
 const OPENAI_CHAT_API_URL = "https://api.openai.com/v1/chat/completions";
 const OPENAI_IMAGE_API_URL = "https://api.openai.com/v1/images/generations";
 // Endpoint for image generation
