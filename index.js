@@ -7,7 +7,10 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
-const API_KEY = "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";
+require('dotenv').config();
+
+const API_KEY = process.env.OPEN_API_KEY;
+
 const OPENAI_CHAT_API_URL = "https://api.openai.com/v1/chat/completions";
 const OPENAI_IMAGE_API_URL = "https://api.openai.com/v1/images/generations";
 
