@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ChatRizz 4.0</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <!-- Highlight.js CSS (Default Theme) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
-
   <style>
     body {
       margin: 0;
@@ -22,23 +19,19 @@
     }
 
     .chat-container {
-        background: linear-gradient(135deg, rgba(120, 120, 121, 0.9), rgba(36, 36, 36, 0.9), rgba(155, 156, 156, 0.9)), url('https://media-hosting.imagekit.io//30106a062643411c/1737847924678.jpg?Expires=1832456046&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=BzPc4XyvJPH7fWgQ816RNzbhADDjk~7Pf7NLZgP7n3gsr9L9iNUD8PA595Fgx16nBoR7o2t6o8p-gRgQWrgmu8cPsiNIJ2q31BvXquTNOMoabOV-5~nwSplB3zxHWNNs~ipVr1Mn~7nNS2PE~VyMh1tasHL6ZpomtBPQndk1~I9XbZeR-uy167ZSW1kDhQrdmQhUssEel2ElzdazmTg7q71DVj8-fTJyqUOcAzXi0qPIqYQawBUGQjIVya6eXlF5iSQhp5Sffj0rHQUcVzoxJFc3rrzyrG1ZreFzqxF563APVJYKBqPsvz7kiKvnpIT3iC6Ue92e6M1Shz6qJL9ZJw__') no-repeat center center fixed;
-background-size: cover;
-box-shadow: inset 0 0 100px rgba(0, 255, 255, 0.2);
-filter: brightness(0.9) contrast(1.2);
-
-
+      background-color: #444654;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
       border-radius: 10px;
       display: flex;
       flex-direction: column;
       width: 100%;
+      max-width: 600px;
       height: 100vh;
       overflow: hidden;
     }
 
     .chat-header {
-      background-color: #000000;
+      background-color: #202123;
      
       display: flex;
       align-items: center;
@@ -80,7 +73,7 @@ filter: brightness(0.9) contrast(1.2);
 
     .message {
       position: relative;
-      background-color: #000000;
+      background-color: #3e3f4b;
       padding: 12px;
       border-radius: 8px;
       font-size: 1rem;
@@ -98,13 +91,13 @@ filter: brightness(0.9) contrast(1.2);
 
     .message.user {
       align-self: flex-end;
-      background-color: #006eff;
+      background-color: #0078ff;
       color: #fff;
     }
 
     .message.bot {
       align-self: flex-start;
-      background-color: #000000;
+      background-color: #3e3f4b;
       color: #d1d5db;
     }
 
@@ -298,7 +291,7 @@ li {
 }
 
 .message pre, .message code {
-    background-color: #313131;
+    background-color: #000000;
    border-radius: 10px;
     padding: 5px;
     display: block;
@@ -318,7 +311,13 @@ li {
   border-radius: 8px;
 }
 
+@media (max-width: 768px) {
+    .chat-container {
+        width: 95%; /* Slightly reduce width to avoid edge overflow */
+        max-height: 85vh; /* Slightly reduce height for viewport consistency */
+    }
 
+}
 .message h3 {
     font-size: 1.4rem; /* Larger font size */
     font-weight: bold; /* Bold font weight */
@@ -326,19 +325,15 @@ li {
     margin: 10px 0; /* Adequate spacing around headers */
 }
 .comment {
-    color: #777777;
+    color: #00ff00;
 }
 
 .print {
-    color: #00ff48; 
+    color: #ff4500; 
 }
 
 .import {
     color: #1e90ff; 
-}
-
-.keyword {
-    color: #ffaa01; 
 }
 
 pre, code {
@@ -359,16 +354,6 @@ li {
 }
 
 
-.recording img {
-    animation: pulse 1s infinite;
-    opacity: 0.7;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); opacity: 0.7; }
-    50% { transform: scale(1.2); opacity: 1; }
-    100% { transform: scale(1); opacity: 0.7; }
-}
 
   </style>
 </head>
@@ -394,7 +379,7 @@ li {
     <!-- Messages will be dynamically added here -->
   </main>
   <div id="typing-indicator" class="typing-indicator" style="display:none;">
-    ChatRizz is thinking...
+    ChatGPT is thinking...
     <span></span>
     <span></span>
     <span></span>
@@ -404,11 +389,7 @@ li {
         <button id="file-icon" class="icon-button" onclick="document.getElementById('file-input').click()">
             <img src="images/attach.png" alt="Upload">
         </button>
-   
         <textarea id="chat-input" placeholder="Type your message..." onkeydown="handleKeyPress(event)"></textarea>
-        <button id="microphone-icon" class="icon-button" onclick="toggleSpeechRecognition()">
-            <img src="images/microphone.svg" alt="Microphone">
-        </button>
         <button id="send-icon" class="icon-button" onclick="handleSubmit()">
             <img src="images/send.png" alt="Send">
         </button>
@@ -420,62 +401,22 @@ li {
 </div>
 </body>
 </html>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-<script>hljs.highlightAll();</script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <script type="text/javascript">
-    
-let recognition;
-let isRecording = false;
-
-function toggleSpeechRecognition() {
-    const micButton = document.getElementById("microphone-icon");
-    const micImage = micButton.querySelector("img");
-
-    if (isRecording) {
-        recognition.stop();
-        isRecording = false;
-        micButton.classList.remove("recording");
-        micImage.src = "images/microphone.png";
-    } else {
-        recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-        recognition.lang = 'en-US';
-        recognition.interimResults = false;
-        recognition.maxAlternatives = 1;
-
-        micButton.classList.add("recording");
-        micImage.src = "images/active.png";
-        isRecording = true;
-
-        recognition.start();
-
-        recognition.onresult = (event) => {
-            const transcript = event.results[0][0].transcript;
-            document.getElementById("chat-input").value = transcript;
-        };
-
-        recognition.onend = () => {
-            micButton.classList.remove("recording");
-            micImage.src = "images/microphone.svg";
-            isRecording = false;
-        };
-
-        recognition.onerror = (event) => {
-            console.error("Speech recognition error", event);
-            micButton.classList.remove("recording");
-            micImage.src = "images/microphone.png";
-            isRecording = false;
-            alert("Speech recognition failed. Please try again.");
-        };
-    }
-}
   const chatBody = document.getElementById("chat-body");
   const chatInput = document.getElementById("chat-input");
   const typingIndicator = document.getElementById("typing-indicator");
   const messageHistory = [];
 
-
+  function escapeHTML(text) {
+      return text
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+  }
 
 function appendMessage(text, sender, isImage = false) {
     const messageDiv = document.createElement("div");
@@ -523,25 +464,11 @@ function appendMessage(text, sender, isImage = false) {
   function showTypingIndicator(show) {
   const typingIndicator = document.getElementById('typing-indicator');
   typingIndicator.style.display = show ? 'flex' : 'none';
-}function handleFileUpload(event) {
+}
+function handleFileUpload(event) {
     const file = event.target.files[0];
-    if (!file) return; // If no file is selected, return
+    if (!file) return;
 
-    // Remove previous file preview if it exists
-    const previousPreview = document.querySelector('.file-preview');
-    if (previousPreview) {
-        previousPreview.remove();
-    }
-
-    // Create a new div element for file preview
-    const filePreview = document.createElement('div');
-    filePreview.className = 'file-preview';
-    filePreview.innerHTML = `📄<span>${file.name} (${(file.size / 1024).toFixed(2)} KB)</span>`;
-
-    appendMessage(`📄<span>${file.name} (${(file.size / 1024).toFixed(2)} KB)</span>`,"sender");
-    
-    // Insert the file preview div before the input container
-   
     const formData = new FormData();
     formData.append('file', file);
 
@@ -552,11 +479,9 @@ function appendMessage(text, sender, isImage = false) {
         }
     }).then((res) => {
         showTypingIndicator(false);
-        
         if (res.data.text) {
             // Set the extracted text into the input field instead of appending it as a message
-            localStorage.setItem("key", 1);
-            localStorage.setItem("data", res.data.text);
+            document.getElementById('chat-input').value = res.data.text;
         } else {
             appendMessage("Extracted text is unavailable.", "bot");
         }
@@ -564,13 +489,7 @@ function appendMessage(text, sender, isImage = false) {
         showTypingIndicator(false);
         appendMessage("Failed to upload file. Please try again.", "bot");
     });
-} 
-
-// Optional: Clear file input after upload if needed
-function clearFileInput() {
-    document.getElementById('file-input').value = '';
 }
-
 
 function formatAndDisplayResponse(message, sender) {
     const formattedMessage = message
@@ -597,30 +516,19 @@ function handleSubmit() {
     chatInput.value = "";
     showTypingIndicator(true);
 
-    const isImageRequest = prompt.toLowerCase().startsWith("generate image:");
+    const isImageRequest = prompt.toLowerCase().startsWith("generate image:") || prompt.toLowerCase().includes("image");
     const endpoint = isImageRequest ? "http://localhost:8080/api/image" : "http://localhost:8080/api/chat";
-    a = localStorage.getItem("key");
-    const payload = isImageRequest 
-    ? { prompt: prompt.replace(/generate image:/i, "").trim(), n: 1, size: "1024x1024" } 
-    : (a == 1 
-        ? { prompt: `${prompt} ${localStorage.getItem("data")}` } // Assign to 'prompt' or any desired key
-        : { prompt, context: messageHistory });
+    const payload = isImageRequest ? { prompt: prompt.replace(/generate image:/i, "").trim(), n: 1, size: "1024x1024" } : { prompt, context: messageHistory };
 
     axios.post(endpoint, payload)
         .then((res) => {
             if (res.data.images) {
                 res.data.images.forEach((imgUrl) => appendMessage(imgUrl, "bot", true));
-                updateSendButton('send');
             } else if (res.data.response) {
                 simulateTypingEffect(res.data.response, "bot");
-            }  else {
+            } else {
                 appendMessage("Unexpected response format. Please try again.", "bot");
             }
-            if (a==1){
-                localStorage.removeItem("key");
-                localStorage.removeItem("data");
-            } 
-           
         })
         .catch(() => {
             appendMessage("Failed to fetch response. Please try again.", "bot");
@@ -632,10 +540,11 @@ function handleSubmit() {
         });
 }
 function simulateTypingEffect(message, sender) {
+  
     const words = message.split(" ");
     let index = 0;
     let currentText = '';
-
+     
     const messageDiv = document.createElement("div");
     messageDiv.className = `message ${sender}`;
 
@@ -643,65 +552,109 @@ function simulateTypingEffect(message, sender) {
     contentDiv.className = "content";
     messageDiv.appendChild(contentDiv);
 
+    // Append initially empty message element to keep place
     chatBody.appendChild(messageDiv);
     chatBody.scrollTop = chatBody.scrollHeight;
 
-    showTypingIndicator(true);  // Show typing indicator before typing starts
-
     typingTimer = setInterval(() => {
         if (index < words.length) {
-            currentText += words[index++] + ' ';
-            contentDiv.innerHTML = formatComplexContent(currentText);
+            currentText += words[index] + ' ';
+            if (sender === "bot" && message.includes("```")) {
+                // Check if this is a code block, then handle it accordingly
+                
+                const codeRegex = /```(.*?)```/sg;
+                currentText = currentText.replace(codeRegex, (match, code) => `<pre><code>${escapeHTML(code)}</code></pre>`);
+                currentText = currentText
+                    .replace(/(["'])(?:(?=(\\?))\2.)*?\1/g, '<strong>$1</strong>') // Bold text within quotes
+                    .replace(/\n/g, '<br>'); // Converts newline characters into HTML line breaks
+                currentText = formatComplexContent(message);
+                contentDiv.innerHTML = currentText;
+            } else if (sender === "bot" && message.match(/\$.*?\$/)) {
+                // Handling mathematical expressions
+                currentText = formatComplexContent(message);
+                contentDiv.textContent = currentText;
+                MathJax.typesetPromise([contentDiv]);
+            } else {
+                // Regular text with dynamic HTML
+                currentText = formatComplexContent(message);
+                currentText = currentText
+                    .replace(/(["'])(?:(?=(\\?))\2.)*?\1/g, '<strong>$1</strong>') // Bold text within quotes
+                    .replace(/\n/g, '<br>'); // Converts newline characters into HTML line breaks
+               
+                contentDiv.innerHTML = currentText;
+            }
+           // Keep scrolling to the latest message
+            index++;
+            showTypingIndicator(false);  // Ensure the typing indicator is turned off
+            updateSendButton('send');
         } else {
-            clearInterval(typingTimer); // Clear the interval once all words are typed
-            showTypingIndicator(false);  // Hide typing indicator when done
-            updateSendButton('send');  // Restore the original button image
+            
+            clearInterval(typingTimer);
+            typingTimer = null;
+            showTypingIndicator(false);  // Ensure the typing indicator is turned off
+            updateSendButton('send');
         }
-        chatBody.scrollTop = chatBody.scrollHeight;  // Auto-scroll to the bottom
-    }, 50);  // Adjust speed if needed
+    }, 50);
 }
 
 
-function formatComplexContent(text) {
-    // Escape HTML first to prevent XSS
-    
-text = escapeHTML(text);
-
-    // Handle code blocks
-    text = text.replace(/```(.*?)```/sg, function(match, code) {
-        return `<pre><code>${highlightSyntax(code)}</code></pre>`;
-    });
-    // Handle headers, strong tags, and new lines
-    text = text.replace(/###\s*(.*?)\n/g, '<h3>$1</h3>')
-               .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-               .replace(/\n/g, '<br>');
-
-    // Handle inline and display math
-    text = text.replace(/\$([^\$]+)\$/g, '\\($1\\)')
-               .replace(/\$\$([^\$]+)\$\$/g, '\\[$1\\]');
-
-    // Enhanced handling for text within single quotes
-    text = text.replace(/'([^']*?)'/g, '<span class="enhanced-quote">$1</span>');
-
-    return text;
-}
-
-function highlightSyntax(code) {
-   code = code.replace(/("""[\s\S]*?"""|'''[\s\S]*?''')/g, '<span class="comment">$&</span>');
-    code = code.replace(/(\/\/.*?$)/gm, '<span class="comment">$1</span>'); // JavaScript/C++ comments
-    code = code.replace(/(#.*?$)/gm, '<span class="comment">$1</span>'); // Python comments
-    code = code.replace(/(print\(.+?\))/gm, '<span class="print">$1</span>'); // Python print statements
-
-    return code;
-}
 
 function escapeHTML(text) {
     return text
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;');
-        
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function formatComplexContent(text) {
+    // Handle code blocks first
+    text = text.replace(/###\s*(.*?)\n/g, '<h3>$1</h3>');
+    text = text.replace(/```(.*?)```/sg, function(match, code) {
+        // Escape HTML and apply syntax highlighting
+        code = escapeHTML(code);
+        code = highlightSyntax(code);
+        return `<pre><code>${code}</code></pre>`;
+    });
+
+
+    // Convert dashes to bullet points
+    
+
+    // Handle mathematical expressions with LaTeX syntax (e.g., \( ... \))
+    text = text.replace(/\$([^\$]+)\$/g, '\\($1\\)'); // For inline math mode
+    text = text.replace(/\$\$([^\$]+)\$\$/g, '\\[$1\\]'); // For display math mode
+
+    // Enhanced handling for text within single quotes
+    text = text.replace(/'([^']*?)'/g, '<span class="enhanced-quote">$1</span>');
+
+    // Apply general formatting
+    text = text.replace(/###\s*(.*?)\n/g, '<h3>$1</h3>')
+               .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+               .replace(/\n/g, '<br>');
+
+    return text;
+}
+
+
+function escapeHTML(text) {
+    return text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+       
+}
+
+function highlightSyntax(code) {
+    // Pattern for single-line comments and other syntactic elements
+    code = code.replace(/(\/\/.*?$)/gm, '<span class="comment">$1</span>'); // JavaScript/C++ comments
+    code = code.replace(/(#.*?$)/gm, '<span class="comment">$1</span>'); // Python comments
+    code = code.replace(/(print\(.+?\))/gm, '<span class="print">$1</span>'); // Python print statements
+    code = code.replace(/(import\s.+?$)/gm, '<span class="import">$1</span>'); // Import statements
+
+    return code;
 }
 
 
@@ -748,7 +701,6 @@ function handleKeyPress(event) {
     if (event.key === "Enter") {
         event.preventDefault();
         handleSubmit();
-        chatBody.scrollTop = chatBody.scrollHeight;
     }
 }
 
@@ -766,11 +718,6 @@ window.MathJax = {
         }
     };
 window.onload = initializeChat;
-
-window.addEventListener("beforeunload", () => {
-    localStorage.removeItem("key");
-    localStorage.removeItem("data");
-});
 
 </script>
 

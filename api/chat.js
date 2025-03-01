@@ -7,13 +7,13 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
-const API_KEY = "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";
+const API_KEY = "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";
 const OPENAI_CHAT_API_URL = "https://api.openai.com/v1/chat/completions";
 const OPENAI_IMAGE_API_URL = "https://api.openai.com/v1/images/generations";
 
 // Endpoint for text/chat generation
 app.post("/api/chat", async (req, res) => {
-  const { prompt } = req.body;
+  const { prompt, context } = req.body;
 
   if (!prompt || typeof prompt !== "string") {
     console.error("Invalid or missing 'prompt' in request body");
@@ -22,17 +22,21 @@ app.post("/api/chat", async (req, res) => {
 
   console.log("Received request with prompt:", prompt);
 
+  // Convert context into the format expected by OpenAI
+  let messages = context.map(c => ({ role: c.sender === 'user' ? 'user' : 'assistant', content: c.text }));
+  messages.push({ role: 'user', content: prompt });
+
   try {
     const response = await axios.post(
       OPENAI_CHAT_API_URL,
       {
-        model: "gpt-4",
-        messages: [{ role: "user", content: prompt }],
-        max_tokens: 4096, // Increase token limit for longer responses
-        temperature: 0.1,  // Balance between creativity and focus
-        top_p: 0.1,          // Use full token distribution for creative responses
-        frequency_penalty: 0, // No penalty for repeated phrases
-        presence_penalty: 0,  // Neutral presence for repeated topics
+        model: "gpt-3.5-turbo",
+        messages: messages,
+        max_tokens: 200000,  // Maximum tokens - check this value based on current API limits
+        temperature: 0.7,  // Increased for more creative outputs
+        top_p: 1,  // Top-p sampling, set to 1 for full randomness within the temperature setting
+        frequency_penalty: 0,
+        presence_penalty: 0,
       },
       {
         headers: {

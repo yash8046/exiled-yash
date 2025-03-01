@@ -7,10 +7,13 @@
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "cra-template": "1.2.0",
+    "multer": "^1.4.5-lts.1",
     "openai": "^4.80.1",
+    "pdf-parse": "^1.1.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-scripts": "5.0.1",
+    "tesseract.js": "^6.0.0",
     "web-vitals": "^4.2.4"
   },
   "scripts": {
